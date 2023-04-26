@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleRobotoBold">
+        <item name="android:layout_width">382dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginStart">40dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginEnd">40dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/textGreen</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="descricoes">
+        <item name="android:layout_width">374dp</item>
+        <item name="android:layout_height">113dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lineSpacingExtra">10sp</item>
+        <item name="android:textColor">@color/textGreen</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="cinzaembaixo" parent="descricoes">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">32dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="botaotextovermelho" parent="descricoes">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginEnd">32dp</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textColor">@color/mainRed</item>
+        <item name="android:textColorLink">@color/mainRed</item>
+    </style>
+</resources>
