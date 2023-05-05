@@ -63,6 +63,11 @@
 
         }
 
+        override fun onDestroyView() {
+            super.onDestroyView()
+            removeProjectsListener()
+        }
+
         fun showCreateProjectSheet() {
             val modalBottomSheet = NewProjectFragment()
             modalBottomSheet.show(parentFragmentManager, "ProjectSheet")
@@ -80,4 +85,8 @@
 
 
        }
+
+        private fun removeProjectsListener() {
+            sharedViewModel.projectsListenerRegistration?.remove()
+        }
     }

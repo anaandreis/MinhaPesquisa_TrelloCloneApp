@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.SetOptions
 import com.google.gson.Gson
 import kotlinx.coroutines.launch
@@ -26,6 +27,9 @@ import java.util.Date
         var endDate: Date? = null
         var createdBy: String = ""
         var assignedTo: ArrayList<String> = ArrayList()
+
+        var projectsListenerRegistration: ListenerRegistration? = null
+
         private val _projectsList: MutableLiveData<List<Project>> = MutableLiveData()
         val projectsList: LiveData<List<Project>>
             get() = _projectsList
@@ -33,6 +37,8 @@ import java.util.Date
         private val mFireStore = FirebaseFirestore.getInstance()
         val createBoardResult: MutableLiveData<Boolean> = MutableLiveData()
         private val FirestoreClass = FirestoreClass()
+
+
 
         fun createBoard() {
             assignedTo.clear()
@@ -77,52 +83,42 @@ import java.util.Date
             Log.d("MapSize", "Size of assignedTo map: ${assignedTo.size}")
         }
 
-        fun addProjectToCurrentUser(projectId: String) {
-            val currentUser = FirebaseAuth.getInstance().currentUser
-            if (currentUser == null) {
-                // User is not logged in
-                return
-            }
-
-            val userRef =
-                FirebaseFirestore.getInstance().collection("users").document(currentUser.uid)
-
-            userRef.update("projects", FieldValue.arrayUnion(projectId))
-                .addOnSuccessListener {
-                    Log.d("", "Project added to user: $projectId")
-                }
-                .addOnFailureListener { e ->
-                    Log.e("", "Error adding project to user: $projectId", e)
-                }
-        }
 
 
         fun getBoardsList() {
 
             viewModelScope.launch {
                 try {
-                    mFireStore.collection(Constants.PROJECTS)
-                        .whereArrayContains(
-                            Constants.ASSIGNED_TO,
-                            FirestoreClass.getCurrentUserId()
-                        )
-                        .get()
-                        .addOnSuccessListener { document ->
-                            Log.e("GetBoardList", document.documents.toString())
-                            val projectsList = arrayListOf<Project>()
-                            for (i in  document.documents){
-                                val project = i.toObject(Project::class.java)
-                                if (project != null) {
-                                    projectsList.add(project)
-                                }
-
-                            }
-                            Log.e("QUANTOS PROJETOS", "{$projectsList.size}")
-                            _projectsList.value = projectsList
-                        }
+                    projectsSnapshotListener()
                 } catch (e: Exception) {
                     Log.e("GETBOARD", "ERROR")  // handle error
                 }
+            }
+        }
+
+
+
+        fun projectsSnapshotListener() {
+            val collectionRef = mFireStore.collection(Constants.PROJECTS)
+                .whereArrayContains(
+                    Constants.ASSIGNED_TO,
+                    FirestoreClass.getCurrentUserId()
+                )
+            projectsListenerRegistration = collectionRef.addSnapshotListener { snapshot, exception ->
+                if (exception != null) {
+                    Log.e("SNAPSHOT", "Error listening to projects collection", exception)
+                    return@addSnapshotListener
+                }
+
+                val projects = mutableListOf<Project>()
+                for (doc in snapshot?.documents ?: emptyList()) {
+                    val project = doc.toObject(Project::class.java)
+                    if (project != null) {
+                        projects.add(project)
+                    }
+                }
+
+                _projectsList.value = projects
             }
         }
     }

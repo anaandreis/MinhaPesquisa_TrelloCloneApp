@@ -15,12 +15,7 @@
         android:contentDescription="@string/tarefas"
         app:showAsAction="ifRoom"/>
 
-    <item
-        android:id="@+id/gruposteste"
-        android:icon="@drawable/dataset"
-        android:title="@string/grupos_teste"
-        android:contentDescription="@string/grupos_teste"
-        app:showAsAction="always"/>
+
     <item
         android:id="@+id/amostras"
         android:icon="@drawable/edit_note"

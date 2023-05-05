@@ -20,7 +20,7 @@
         android:theme="@style/splashScreenTheme"
         tools:targetApi="31">
         <activity
-            android:name=".projectDetailsHome.ProjectDetailsHomeActivity"
+            android:name=".projectDetailsHome.presentation.ProjectDetailsHomeActivity"
             android:exported="false" />
         <activity
             android:name=".projectsHome.presentation.ProjectActivity"
