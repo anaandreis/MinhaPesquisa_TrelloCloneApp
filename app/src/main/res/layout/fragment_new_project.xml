@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".newProject.NewProjectFragment">
+
+    <data>
+        <variable
+            name="newProjectViewModel"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.newProject.NewProjectViewModel"/>
+        <variable
+            name="newProjectFragment"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.newProject.NewProjectFragment"/>
+    </data>
+
+ <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+            android:id="@+id/standard_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:behavior_peekHeight="550dp"
+            app:behavior_fitToContents="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <!-- Bottom sheet contents. -->
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/close_24" />
+
+
+            <TextView
+                android:id="@+id/criarProjetoTitle"
+                style="@style/TitleRobotoBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/novoprojeto"
+                android:textColor="@color/mainRed" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="?attr/textInputFilledStyle"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:boxBackgroundColor="@color/editTextGray"
+                app:boxStrokeColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:hint="Nome do projeto">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/preencherNome_et"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="?attr/textInputFilledStyle"
+                    android:layout_width="match_parent"
+                    app:boxBackgroundColor="@color/editTextGray"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    app:boxStrokeColor="@color/grey"
+                    android:layout_marginBottom="30dp"
+                    android:hint="Descrição">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/descricaoProjeto_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/selecionarDatasButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                style="?attr/materialButtonOutlinedStyle"
+                android:textColor="@color/mainRed"
+                app:strokeColor="@color/mainRed"
+                android:text="@string/selecionardatas" />
+
+            <Button
+                android:id="@+id/selecionarMembrosButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/mainRed"
+                app:strokeColor="@color/mainRed"
+                style="?attr/materialButtonOutlinedStyle"
+                android:text="@string/adicionarmembros" />
+
+
+
+
+            <Button
+                android:id="@+id/criarProjetoButton"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/criarprojeto"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/mainRed" />
+
+
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

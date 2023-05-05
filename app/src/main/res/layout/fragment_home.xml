@@ -2,15 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".userHome.HomeFragment">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+    tools:context=".home.HomeFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/titleConstraint"
+            android:fillViewport="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -45,6 +41,7 @@
                 android:id="@+id/Icon3D"
                 android:layout_width="408dp"
                 android:layout_height="416dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/iconinicial"
                 app:layout_constraintBottom_toTopOf="@+id/tileText"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -60,6 +57,7 @@
                 android:layout_height="76dp"
                 android:lineSpacingExtra="10dp"
                 android:text="@string/homeTitle"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintBottom_toTopOf="@+id/descriptionText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +70,7 @@
                 android:text="@string/descriptionText"
                 app:layout_constraintBottom_toTopOf="@+id/entrarButton"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tileText" />
 
@@ -80,34 +79,40 @@
                 style="?attr/materialButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="148dp"
+                android:layout_marginBottom="96dp"
                 android:text="@string/entrar"
                 app:backgroundTint="@color/mainRed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+
+                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
                 android:id="@+id/cadastrarText"
                 style="@style/cinzaembaixo"
+                android:layout_marginTop="20dp"
+                android:paddingTop="20dp"
+
                 android:text="@string/textocadastro"
                 app:layout_constraintEnd_toStartOf="@+id/guideline_vertical"
-                app:layout_constraintHorizontal_bias="0.978"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/entrarButton" />
 
             <TextView
                 android:id="@+id/cadastrarButton"
                 style="@style/botaotextovermelho"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="20dp"
+                android:paddingTop="20dp"
                 android:text="@string/cadastrar"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.181"
+                app:layout_constraintHorizontal_bias="0.058"
                 app:layout_constraintStart_toStartOf="@+id/guideline_vertical"
                 app:layout_constraintTop_toBottomOf="@+id/entrarButton" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
 
     </layout>

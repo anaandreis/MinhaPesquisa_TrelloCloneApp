@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".newProject.AddMembers.Fragment">
+
+    <data>
+        <variable
+            name="newProjectViewModel"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.newProject.NewProjectViewModel"/>
+        <variable
+            name="addMembersFragment"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.newProject.FragmentAddMembers"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/standard_bottom_sheet2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:behavior_peekHeight="550dp"
+            app:behavior_fitToContents="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <!-- Bottom sheet contents. -->
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/close_24" />
+
+
+            <TextView
+                android:id="@+id/addMemberTextView"
+                style="@style/TitleRobotoBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/adicione_membros"
+                android:textColor="@color/mainRed" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="?attr/textInputFilledStyle"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:boxBackgroundColor="@color/editTextGray"
+                app:boxStrokeColor="@color/grey"
+                android:layout_marginTop="20dp"
+                android:hint="@string/email"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addemailEditView"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/addMemberButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/mainRed"
+                    app:strokeColor="@color/mainRed"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:text="Adicionar" />
+
+
+            </LinearLayout>
+
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </layout>
+

@@ -10,19 +10,20 @@ import com.anaandreis.minhapesquisa_trellocloneapp.signUp.presentation.SignUpFra
 import com.google.android.material.snackbar.Snackbar
 
 class DialogFunctions {
-    lateinit var mProgressDialog: Dialog
+    private var mProgressDialog: Dialog? = null
 
     fun showProgressDialog(context: Context, text: String) {
           mProgressDialog = Dialog(context)
-          mProgressDialog.setContentView(R.layout.dialog_progress)
+          mProgressDialog?.setContentView(R.layout.dialog_progress)
 
-          var textView = mProgressDialog.findViewById<TextView>(R.id.progress_dialog_tv)
-          textView.text = text
-          mProgressDialog.show()
+          var textView = mProgressDialog?.findViewById<TextView>(R.id.progress_dialog_tv)
+          textView?.text = text
+          mProgressDialog?.show()
     }
 
     fun hideProgressDialog(context: Context){
-        mProgressDialog.dismiss()
+        mProgressDialog?.dismiss()
+        mProgressDialog = null
     }
 
    fun showErrorSnackBar(view: View, message: String) {

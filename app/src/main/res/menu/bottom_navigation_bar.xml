@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/avisos"
+        android:icon="@drawable/notifications"
+        android:title="@string/avisos"
+        android:contentDescription="@string/avisos"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/tarefas"
+        android:icon="@drawable/note_alt"
+        android:title="@string/tarefas"
+        android:contentDescription="@string/tarefas"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/gruposteste"
+        android:icon="@drawable/dataset"
+        android:title="@string/grupos_teste"
+        android:contentDescription="@string/grupos_teste"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/amostras"
+        android:icon="@drawable/edit_note"
+        android:title="@string/amostras"
+        android:contentDescription="@string/amostras"
+        app:showAsAction="always"/>
+</menu>

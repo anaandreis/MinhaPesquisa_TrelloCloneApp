@@ -40,4 +40,9 @@
         <item name="android:textColor">@color/mainRed</item>
         <item name="android:textColorLink">@color/mainRed</item>
     </style>
+
+    <style name="MyOverflowButtonStyle" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:src">@drawable/ic_user_24</item>
+    </style>
+
 </resources>

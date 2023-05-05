@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".newProject.FragmentSelectImage">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/standard_bottom_sheet3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:behavior_peekHeight="550dp"
+            app:behavior_fitToContents="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <!-- Bottom sheet contents. -->
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/close_24" />
+
+
+            <TextView
+                android:id="@+id/selecioneTextView"
+                style="@style/TitleRobotoBold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:text="@string/selecionarCapa"
+                android:textColor="@color/mainRed" />
+
+
+            <TextView
+                android:id="@+id/escolhaTextView"
+                style="@style/cinzaembaixo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:gravity="center"
+                android:layout_marginEnd="20dp"
+                android:text="@string/escolha_um_fundo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/cor1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="50dp"
+                    android:src="@drawable/redcircle"
+                    android:contentDescription="TODO" />
+
+                <ImageView
+                    android:id="@+id/cor2"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/greencircle" />
+
+                <ImageView
+                    android:id="@+id/cor3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/bluecircle" />
+
+                <ImageView
+                    android:id="@+id/cor4"
+                    android:layout_width="70dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/yellowcircle" />
+
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/listDivider"
+                app:layout_anchor="@+id/standard_bottom_sheet3"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="4dp"
+                app:layout_anchorGravity="bottom|center" />
+
+            <TextView
+                android:id="@+id/escolhadaGaleriatextView"
+                style="@style/cinzaembaixo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text="@string/ou_nselecione_da_sua_galeria" />
+
+            <ImageView
+                android:id="@+id/cameraButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/camera_24" />
+
+        </LinearLayout>
+
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

@@ -22,8 +22,21 @@
     <string name="cliqueaqui">Clique aqui</string>
     <string name="esqueceu">Esqueceu sua senha?</string>
     <string name="cadastro">Cadastro</string>
-    <string name="textinhocadastro">Preencha seu nome, email e senha.\nDê preferência a seu email USP no cadastro.</string>
+    <string name="textinhocadastro">Preencha seu nome, email e senha.\nSenhas devem ter 6 caracteres no mínimo .</string>
     <string name="confirme">confirme a senha</string>
     <string name="criarConta">CRIAR CONTA</string>
     <string name="please_wait">Please wait...</string>
+    <string name="menu">menu options\n</string>
+    <string name="tarefas">Tarefas</string>
+    <string name="avisos">Avisos</string>
+    <string name="grupos_teste">Grupos Teste</string>
+    <string name="amostras">Amostras</string>
+    <string name="novoprojeto">Novo Projeto</string>
+    <string name="selecionardatas">Selecionar datas</string>
+    <string name="adicionarmembros">Adicionar membros</string>
+    <string name="selecionarCapa">Selecionar capa</string>
+    <string name="criarprojeto">Criar projeto</string>
+    <string name="adicione_membros">Adicione Membros</string>
+    <string name="ou_nselecione_da_sua_galeria">ou\nSelecione da sua galeria</string>
+    <string name="escolha_um_fundo">Escolha um fundo</string>
 </resources>

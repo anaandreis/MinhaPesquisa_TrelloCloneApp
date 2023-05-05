@@ -1,7 +1,7 @@
-package com.anaandreis.minhapesquisa_trellocloneapp.projectsHome
+package com.anaandreis.minhapesquisa_trellocloneapp.projectsHome.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.anaandreis.minhapesquisa_trellocloneapp.R
 
