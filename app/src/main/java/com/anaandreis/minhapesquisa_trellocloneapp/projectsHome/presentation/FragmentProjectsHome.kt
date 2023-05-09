@@ -1,5 +1,6 @@
     package com.anaandreis.minhapesquisa_trellocloneapp.projectsHome.presentation
 
+    import android.content.Intent
     import android.os.Bundle
     import android.view.LayoutInflater
     import android.view.View
@@ -16,6 +17,8 @@
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.NewProjectViewModel
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.Project
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.projectsAdapter
+    import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.ActivityProjectDetailsHome
+    import com.anaandreis.minhapesquisa_trellocloneapp.utils.Constants
 
 
     class FragmentProjectsHome : Fragment() {
@@ -82,6 +85,14 @@
            adapter.clear() // clear the adapter's list before adding new items
            adapter.addAll(ProjectsList) // add new items to the adapter's list
            recyclerView.adapter = adapter
+
+           adapter.setOnClickListener(object : projectsAdapter.OnClickListener {
+               override fun onClick(position: Int, model: Project) {
+                   val intent = Intent(requireContext(), ActivityProjectDetailsHome::class.java)
+                   intent.putExtra(Constants.DOCUMENT_ID, model.documentID)
+                   startActivity(intent)
+               }
+           })
 
 
        }

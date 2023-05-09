@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".projectDetailsHome.presentation.ProjectDetailsHomeActivity">
+    tools:context=".projectDetailsHome.presentation.ActivityProjectDetailsHome">
+
+    <data>
+        <variable
+            name="projectDetailsViewModel"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.ProjectDetailsViewModel"/>
+        <variable
+            name="projectDetailsActivity"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.ActivityProjectDetailsHome"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <fragment
+            android:id="@+id/myNavHostFragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="412dp"
+            android:layout_height="744dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintVertical_bias="1.0"
+            app:navGraph="@navigation/nav_graph3"
+            tools:layout="@layout/fragment_warning" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -18,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/editTextGray"
-            app:title="Projetos"
+            tools:title="Monitoramento de Pássaros"
             app:titleCentered="true"
             app:titleTextColor="@color/cardview_dark_background" />
 
@@ -37,20 +64,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_bar" />
 
-    <fragment
-        android:id="@+id/myNavHostFragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="412dp"
-        android:layout_height="744dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintVertical_bias="1.0"
-        app:navGraph="@navigation/nav_graph3"
-        tools:layout="@layout/fragment_warnings" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

@@ -21,6 +21,7 @@ import java.util.Date
 
     class NewProjectViewModel: ViewModel() {
 
+        var documentId: String= ""
         var projectName: String = ""
         var projectDescription: String = ""
         var startDate: Date? = null
@@ -46,6 +47,7 @@ import java.util.Date
 
 
             var projectInfo = Project(
+                documentId,
                 projectName,
                 projectDescription,
                 startDate!!,
@@ -113,6 +115,7 @@ import java.util.Date
                 val projects = mutableListOf<Project>()
                 for (doc in snapshot?.documents ?: emptyList()) {
                     val project = doc.toObject(Project::class.java)
+                    project?.documentID = doc.id
                     if (project != null) {
                         projects.add(project)
                     }
