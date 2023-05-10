@@ -57,8 +57,12 @@ import java.util.Date
             )
 
 
-            mFireStore.collection(Constants.PROJECTS)
-                .document()
+            val projectDocumentRef = mFireStore.collection(Constants.PROJECTS).document()
+            val generatedDocumentId = projectDocumentRef.id
+
+            projectInfo.documentID = generatedDocumentId
+
+            projectDocumentRef
                 .set(projectInfo, SetOptions.merge())
                 .addOnSuccessListener {
                     createBoardResult.postValue(true)

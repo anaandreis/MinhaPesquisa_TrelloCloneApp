@@ -3,8 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/warningCard"
-
+    android:id="@+id/sampleCard"
+    android:backgroundTint="@color/editTextGray"
     style="?attr/materialCardViewElevatedStyle"
     android:clickable="true"
     android:focusable="true"
@@ -25,40 +25,52 @@
 
 
         <TextView
-            android:id="@+id/warningText"
-            android:layout_width="324dp"
+            android:id="@+id/sampleDateText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto"
-            android:text="Limpar as pás após utilizar no final de semana"
+            android:text="16/04"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/autorTextView"
+            android:id="@+id/sampleHourText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:fontFamily="@font/roboto"
+            android:text="15:30"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            app:layout_constraintBottom_toBottomOf="@+id/sampleDateText"
+            app:layout_constraintEnd_toEndOf="@id/editIconButton" />
+
+        <TextView
+            android:id="@+id/sampleAuthorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Adriano"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:textColor="?android:attr/textColorSecondary"
-            app:layout_constraintStart_toStartOf="@+id/warningText"
-            app:layout_constraintTop_toBottomOf="@+id/warningText" />
+            app:layout_constraintStart_toStartOf="@+id/sampleDateText"
+            app:layout_constraintTop_toBottomOf="@+id/sampleDateText" />
 
         <ImageView
-            android:id="@+id/hamburguerIconButton"
+            android:id="@+id/editIconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/autorTextView"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/close_24" />
+            app:layout_constraintTop_toBottomOf="@+id/sampleDateText"
+            app:srcCompat="@drawable/hamburguer_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
+

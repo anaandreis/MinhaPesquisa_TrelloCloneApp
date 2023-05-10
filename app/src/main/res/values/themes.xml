@@ -16,4 +16,12 @@
         <item name="android:windowFullscreen">true</item>
         
     </style>
+
+    <style name="ProjectDetailsTheme" parent="Theme.Material3.Light">
+        <item name="android:windowBackground">@drawable/splash_drawable</item>
+        <item name="android:statusBarColor">@color/mainGreen</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowActionBar">false</item>
+
+    </style>
 </resources>
