@@ -8,7 +8,7 @@
     <data>
         <variable
             name="projectDetailsViewModel"
-            type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.ProjectDetailsViewModel"/>
+            type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.domain.ProjectDetailsViewModel"/>
         <variable
             name="projectDetailsActivity"
             type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.ActivityProjectDetailsHome"/>
@@ -72,6 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             tools:ignore="NotSibling" >
 
 
@@ -84,6 +85,7 @@
             android:layout_height="match_parent"
             android:visibility="visible"
             tools:layout_editor_absoluteX="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             tools:layout_editor_absoluteY="-96dp" />
         </androidx.core.widget.NestedScrollView>
 
@@ -93,7 +95,17 @@
             android:layout_height="match_parent"
             android:visibility="gone"
             android:layout_marginTop="80dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             app:layout_constraintTop_toBottomOf="@id/taskButton" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/samplesRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_marginTop="80dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+            app:layout_constraintTop_toBottomOf="@id/amostrasButton" />
 
 
 

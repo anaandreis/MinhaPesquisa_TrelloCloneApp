@@ -7,9 +7,9 @@ import java.util.Date
 
 data class Tasks (
     val task: String = "",
-    val Date: Date,
-    val responsable: String= "",
-    var projectId: String= ""
+    val date: Date,
+    val responsible: String= "",
+    var projectId: String?= ""
 ): Parcelable {
     // Add this no-argument constructor
     constructor() : this("", Date(),"", "")
@@ -23,8 +23,8 @@ data class Tasks (
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(task)
-        parcel.writeLong(Date.time)
-        parcel.writeString(responsable)
+        parcel.writeLong(date.time)
+        parcel.writeString(responsible)
         parcel.writeString(projectId)
     }
 

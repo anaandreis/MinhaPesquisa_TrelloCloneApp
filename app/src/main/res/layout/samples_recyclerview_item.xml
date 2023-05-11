@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/sampleCard"
-    android:backgroundTint="@color/editTextGray"
     style="?attr/materialCardViewElevatedStyle"
     android:clickable="true"
     android:focusable="true"
+    android:backgroundTint="@color/textGray"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -32,6 +32,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto"
             android:text="16/04"
+            android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto"
             android:text="15:30"
+            android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             app:layout_constraintBottom_toBottomOf="@+id/sampleDateText"
             app:layout_constraintEnd_toEndOf="@id/editIconButton" />
@@ -54,8 +56,8 @@
             android:paddingBottom="8dp"
             android:fontFamily="@font/roboto_bold"
             android:text="Adriano"
+            android:textColor="@color/white"
             android:textAppearance="?attr/textAppearanceBodyMedium"
-            android:textColor="?android:attr/textColorSecondary"
             app:layout_constraintStart_toStartOf="@+id/sampleDateText"
             app:layout_constraintTop_toBottomOf="@+id/sampleDateText" />
 

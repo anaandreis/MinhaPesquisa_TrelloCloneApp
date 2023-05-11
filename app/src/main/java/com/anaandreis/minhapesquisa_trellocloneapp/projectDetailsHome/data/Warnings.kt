@@ -6,7 +6,7 @@ import android.os.Parcelable
 data class Warning (
     val warning: String = "",
     val author: String= "",
-    var projectId: String= ""
+    var projectId: String?= ""
 ): Parcelable {
     // Add this no-argument constructor
     constructor() : this("", "", "")

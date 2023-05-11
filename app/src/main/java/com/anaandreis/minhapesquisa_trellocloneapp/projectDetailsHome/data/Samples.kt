@@ -9,23 +9,26 @@ import java.util.Date
 data class Samples(
     val annotation: String = "",
     val date: Date,
-    var projectId: String = ""
+    val author: String = "",
+    var projectId: String? = ""
 ) : Parcelable {
 
     // Add this no-argument constructor
     @RequiresApi(Build.VERSION_CODES.O)
-    constructor() : this("", Date(), "")
+    constructor() : this("", Date(),"", "")
 
     @RequiresApi(Build.VERSION_CODES.O)
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         Date(parcel.readLong()),
+        parcel.readString()!!,
         parcel.readString()!!
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(annotation)
         parcel.writeLong(date.time)
+        parcel.writeString(author)
         parcel.writeString(projectId)
     }
 

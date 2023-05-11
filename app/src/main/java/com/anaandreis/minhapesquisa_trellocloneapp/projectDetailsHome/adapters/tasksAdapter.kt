@@ -28,10 +28,10 @@ class tasksAdapter (private val context: Context,
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val model = list[position]
         (holder.itemView.findViewById(R.id.taskDescriptionTextview) as TextView).text = model.task
-        (holder.itemView.findViewById(R.id.responsableTextView) as TextView).text = model.responsable
+        (holder.itemView.findViewById(R.id.responsableTextView) as TextView).text = model.responsible
 
         val dateFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
-        val formattedDate = dateFormat.format(model.Date)
+        val formattedDate = dateFormat.format(model.date)
 
         (holder.itemView.findViewById(R.id.prazoTextView) as TextView).text = formattedDate
     }

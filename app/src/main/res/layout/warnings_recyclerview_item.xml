@@ -56,8 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:paddingBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/autorTextView"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/warningText"
             app:srcCompat="@drawable/close_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

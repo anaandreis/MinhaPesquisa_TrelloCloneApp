@@ -1,33 +1,26 @@
 package com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation
 
 import android.app.Dialog
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.anaandreis.minhapesquisa_trellocloneapp.R
 import com.anaandreis.minhapesquisa_trellocloneapp.databinding.ActivityProjectDetailsHomeBinding
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.Project
-import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.projectsAdapter
+import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.samplesAdapter
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.tasksAdapter
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.warningsAdapter
+import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.data.Samples
 import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.data.Tasks
 import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.data.Warning
+import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.domain.ProjectDetailsViewModel
 import com.anaandreis.minhapesquisa_trellocloneapp.utils.Constants
 import com.anaandreis.minhapesquisa_trellocloneapp.utils.DialogFunctions
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 import com.google.firebase.firestore.FirebaseFirestore
 
 class ActivityProjectDetailsHome : AppCompatActivity() {
@@ -37,8 +30,9 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
     val Dialog = DialogFunctions()
     private lateinit var actionBar: androidx.appcompat.app.ActionBar
     private val mFirestore = FirebaseFirestore.getInstance()
-    var projectdocumentID=""
+    private var projectdocumentID = ""
     private lateinit var recyclerView: RecyclerView
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,6 +40,32 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
         binding = ActivityProjectDetailsHomeBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+        if(intent.hasExtra(Constants.DOCUMENT_ID)) {
+            projectdocumentID = intent.getStringExtra(Constants.DOCUMENT_ID)!!
+            sharedViewModel.currentProjectId.value = projectdocumentID
+            Log.d("ID FROM INTENT", "{$projectdocumentID}")
+        }
+
+        actionBar = supportActionBar!!
+        actionBar?.apply {
+            // Customize the back button
+            setHomeAsUpIndicator(R.drawable.baseline_arrow_back_ios_24)
+
+            // Showing the back button in the action bar
+            setDisplayHomeAsUpEnabled(true)
+        }
+
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+
+        getProjectDetails(projectdocumentID)
+
+        Dialog.showProgressDialog(this, resources.getString(R.string.please_wait))
 
         sharedViewModel.getWarningList()
         sharedViewModel.warningsList.observe(this, Observer { warningList ->
@@ -59,6 +79,17 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
             }
         })
 
+        sharedViewModel.samplesList.observe(this, Observer { samplesList ->
+            if ( samplesList.isNotEmpty()) {
+                populateSamplesRecyclerView(samplesList as ArrayList<Samples>)
+            }
+        })
+
+
+        binding.warningButton.setOnClickListener { showNewWarningProjectSheet() }
+        binding.taskButton.setOnClickListener { showNewTasksProjectSheet()}
+        binding.amostrasButton.setOnClickListener{ showNewSamplesProjectSheet()}
+
 
         binding.bottomNavigation.setOnItemSelectedListener() { item ->
             when(item.itemId) {
@@ -69,6 +100,7 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
                     binding.warningButton.visibility=View.VISIBLE
                     binding.avisosRecyclerView.visibility=View.VISIBLE
                     binding.tasksRecyclerView.visibility=View.GONE
+                    binding.samplesRecyclerView.visibility=View.GONE
 
 
                     true
@@ -78,11 +110,13 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
                     binding.taskButton.visibility= View.VISIBLE
                     binding.amostrasButton.visibility=View.GONE
                     binding.warningButton.visibility=View.GONE
+                    binding.tasksRecyclerView.visibility=View.VISIBLE
+                    binding.samplesRecyclerView.visibility=View.GONE
 
                     sharedViewModel.getTaskList()
 
                     binding.avisosRecyclerView.visibility=View.GONE
-                    binding.tasksRecyclerView.visibility=View.VISIBLE
+
 
                     true
                 }
@@ -92,54 +126,33 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
                     binding.warningButton.visibility=View.GONE
                     binding.avisosRecyclerView.visibility=View.GONE
                     binding.tasksRecyclerView.visibility=View.GONE
+
+
+                    sharedViewModel.getSamplesList()
+
+                    binding.samplesRecyclerView.visibility=View.VISIBLE
                     true
                 }
                 else -> false
             }
         }
-
-        if(intent.hasExtra(Constants.DOCUMENT_ID)) {
-            projectdocumentID = intent.getStringExtra(Constants.DOCUMENT_ID)!!
-        }
-
-        Dialog.showProgressDialog(this, resources.getString(R.string.please_wait))
-
-        getProjectDetails(projectdocumentID)
-
-        // calling the action bar
-        actionBar = supportActionBar ?: return
-
-        if (actionBar != null) {
-
-            // Customize the back button
-            actionBar.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_ios_24);
-
-            // showing the back button in action bar
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-
-    }
-
-    // this event will enable the back
-    // function to the button on press
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> {
-                finish()
-                return true
-            }
-        }
-        return super.onContextItemSelected(item)
     }
 
 
-    fun projectDetails(project: Project){
-        Dialog.hideProgressDialog(this)
-        sharedViewModel.currentProjectInfo = project
-        sharedViewModel.currentProjectId = project.documentID
-        supportActionBar?.title = project.name
 
+    fun showNewWarningProjectSheet() {
+        val modalBottomSheet = FragmentNewWarning()
+        modalBottomSheet.show(supportFragmentManager, "ProjectSheet")
+    }
+
+    fun showNewTasksProjectSheet() {
+        val modalBottomSheet = FragmentNewTask()
+        modalBottomSheet.show(supportFragmentManager, "ProjectSheet")
+    }
+
+    fun showNewSamplesProjectSheet() {
+        val modalBottomSheet = FragmentNewSample()
+        modalBottomSheet.show(supportFragmentManager, "ProjectSheet")
     }
 
 
@@ -155,12 +168,23 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
                 board.documentID = document.id
 
                 projectDetails(document.toObject(Project::class.java)!!)
-
+                sharedViewModel.currentProjectId.value= board.documentID
+                Log.d("PROJECT ID FROM GET PROJECT", "{${sharedViewModel.currentProjectId.value}}")
 
             }.addOnFailureListener {
                 Log.e("Project Details", "failed")
             }
     }
+
+
+
+    fun projectDetails(project: Project){
+        Dialog.hideProgressDialog(this)
+        sharedViewModel.currentProjectInfo = project
+        supportActionBar?.title = project.name
+
+    }
+
 
     fun populateWarningsRecyclerView(WarningsList: ArrayList<Warning>) {
 
@@ -184,7 +208,15 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
         adapter.clear() // clear the adapter's list before adding new items
         adapter.addAll(TasksList) // add new items to the adapter's list
         recyclerView.adapter = adapter
+    }
 
+    fun populateSamplesRecyclerView(TasksList: ArrayList<Samples>) {
 
+        recyclerView = binding.samplesRecyclerView
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = samplesAdapter(this, ArrayList())
+        adapter.clear() // clear the adapter's list before adding new items
+        adapter.addAll(TasksList) // add new items to the adapter's list
+        recyclerView.adapter = adapter
     }
 }

@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
-       android:background="@color/secondGreen">
+       android:background="@color/textGray">
 
        <androidx.coordinatorlayout.widget.CoordinatorLayout
            android:id="@+id/coordinatorLayout"
@@ -32,7 +32,7 @@
                    android:id="@+id/top_App_Bar"
                    android:layout_width="match_parent"
                    android:layout_height="?attr/actionBarSize"
-                   android:background="@color/secondGreen"
+                   android:background="@color/textGray"
                    app:menu="@menu/top_app_bar"
                    app:title="Projetos"
                    app:titleCentered="true"

@@ -40,4 +40,14 @@
     <string name="ou_nselecione_da_sua_galeria">ou\nSelecione da sua galeria</string>
     <string name="escolha_um_fundo">Escolha um fundo</string>
     <string name="x">x</string>
+    <string name="novo_aviso">Novo Aviso</string>
+    <string name="criar_aviso">Criar aviso</string>
+    <string name="autor">autor</string>
+    <string name="aviso">aviso</string>
+    <string name="criar_tarefa">Criar tarefa</string>
+    <string name="tarefa">Tarefa</string>
+    <string name="respons_veis">Responsáveis</string>
+    <string name="nova_tarefa">Nova Tarefa</string>
+    <string name="salvar_amostra">Salvar amostra</string>
+    <string name="selecionar_prazo">Selecionar prazo</string>
 </resources>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".projectDetailsHome.presentation.FragmentNewWarning">
+
+    <data>
+        <variable
+            name="newProjectDetailsViewModel"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.domain.ProjectDetailsViewModel"/>
+        <variable
+            name="newWarningFragment"
+            type="com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.FragmentNewWarning"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:id="@+id/warning_bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:behavior_peekHeight="550dp"
+            app:behavior_fitToContents="true"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+            <!-- Bottom sheet contents. -->
+
+            <ImageView
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/close_24" />
+
+
+
+            <TextView
+                android:id="@+id/criarAvisoTitle"
+                style="@style/TitleRobotoBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/novo_aviso"
+                android:textColor="@color/mainRed" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="?attr/textInputFilledStyle"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:boxBackgroundColor="@color/editTextGray"
+                app:boxStrokeColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:hint="@string/aviso">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/preencherAviso_et"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="?attr/textInputFilledStyle"
+                    android:layout_width="match_parent"
+                    app:boxBackgroundColor="@color/editTextGray"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    app:boxStrokeColor="@color/grey"
+                    android:layout_marginBottom="30dp"
+                    android:hint="@string/autor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/autorAviso_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/grey" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/salvarAvisoButton"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
+                android:text="@string/criar_aviso"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/mainRed" />
+
+
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>
