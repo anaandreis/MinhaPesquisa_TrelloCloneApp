@@ -29,9 +29,9 @@
                android:layout_height="wrap_content">
 
                <com.google.android.material.appbar.MaterialToolbar
-                   android:id="@+id/top_App_Bar"
                    android:layout_width="match_parent"
-                   android:layout_height="?attr/actionBarSize"
+                   android:id="@+id/projetosAppBar"
+                   android:layout_height="56dp"
                    android:background="@color/textGray"
                    app:menu="@menu/top_app_bar"
                    app:title="Projetos"
@@ -46,7 +46,6 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:contentDescription="@string/menu"
-               app:layout_anchor="@+id/nestedScrollView"
                app:layout_anchorGravity="center"
                app:layout_behavior="@string/appbar_scrolling_view_behavior">
 

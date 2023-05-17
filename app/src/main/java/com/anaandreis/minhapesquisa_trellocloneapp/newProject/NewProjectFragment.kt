@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import android.widget.Toast.makeText
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.anaandreis.minhapesquisa_trellocloneapp.FirestoreClass
@@ -23,7 +24,7 @@ class NewProjectFragment : BottomSheetDialogFragment() {
 
     lateinit var binding: FragmentNewProjectBinding
     private val dialogFunctions = DialogFunctions()
-    private val sharedViewModel: NewProjectViewModel by viewModels()
+    private val sharedViewModel: NewProjectViewModel by activityViewModels()
     private val FirestoreClass = FirestoreClass()
 
     override fun onCreateView(
@@ -77,6 +78,7 @@ class NewProjectFragment : BottomSheetDialogFragment() {
                 projectCreatedSuccessfully() //show toast to the user
                 resetAllTexts()
                 dismiss()
+                sharedViewModel.createBoardResult.value = false
             } else {
                 dialogFunctions.hideProgressDialog(requireContext())
             }
@@ -151,10 +153,15 @@ class NewProjectFragment : BottomSheetDialogFragment() {
     fun creatingBoardCheck(): Boolean {
         return when {
             sharedViewModel.startDate != null
-                    && sharedViewModel.endDate != null -> {
-                true}
+                    && sharedViewModel.endDate != null
+                    && sharedViewModel.assignedTo.value != null -> {
+
+                true }
+            sharedViewModel.assignedTo.value.isNullOrEmpty() -> {
+                dialogFunctions.showErrorSnackBar(binding.root, "Selecione pelo menos um usuário")
+                false}
             else -> {
-            Toast.makeText(activity, "Selecione as datas", Toast.LENGTH_SHORT).show()
+                dialogFunctions.showErrorSnackBar(binding.root, "Selecione o prazo")
                 false}
 
         }

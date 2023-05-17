@@ -46,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@+id/projectTitle" />
 
         <ImageView
-            android:id="@+id/hamburguerIconButton"
+            android:id="@+id/deleteIconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -54,7 +54,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/projectTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/hamburguer_24" />
+            app:srcCompat="@drawable/baseline_delete_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

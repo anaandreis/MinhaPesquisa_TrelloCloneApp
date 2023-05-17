@@ -1,8 +1,10 @@
 package com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation
 
 import android.app.Dialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.anaandreis.minhapesquisa_trellocloneapp.R
 import com.anaandreis.minhapesquisa_trellocloneapp.databinding.ActivityProjectDetailsHomeBinding
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.Project
+import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.projectsAdapter
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.samplesAdapter
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.tasksAdapter
 import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.warningsAdapter
@@ -19,6 +22,7 @@ import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.data.Sampl
 import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.data.Tasks
 import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.data.Warning
 import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.domain.ProjectDetailsViewModel
+import com.anaandreis.minhapesquisa_trellocloneapp.projectsHome.presentation.ProjectActivity
 import com.anaandreis.minhapesquisa_trellocloneapp.utils.Constants
 import com.anaandreis.minhapesquisa_trellocloneapp.utils.DialogFunctions
 import com.google.firebase.firestore.FirebaseFirestore
@@ -57,6 +61,18 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Handle the back button press
+                val intent = Intent(this, ProjectActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onStart() {
@@ -129,7 +145,6 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
 
 
                     sharedViewModel.getSamplesList()
-
                     binding.samplesRecyclerView.visibility=View.VISIBLE
                     true
                 }
@@ -196,6 +211,12 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
         adapter.addAll(WarningsList) // add new items to the adapter's list
         recyclerView.adapter = adapter
 
+        adapter.setOnDeleteButtonClickListener(object : warningsAdapter.OnDeleteButtonClickListener {
+            override fun onDeleteButtonClick(position: Int, model: Warning) {
+                // Implement the logic here when the delete button is clicked
+            }
+        })
+
 
     }
 
@@ -208,7 +229,15 @@ class ActivityProjectDetailsHome : AppCompatActivity() {
         adapter.clear() // clear the adapter's list before adding new items
         adapter.addAll(TasksList) // add new items to the adapter's list
         recyclerView.adapter = adapter
+
+        adapter.setOnDeleteButtonClickListener(object : tasksAdapter.OnDeleteButtonClickListener {
+            override fun onDeleteButtonClick(position: Int, model: Tasks) {
+                // Implement the logic here when the delete button is clicked
+            }
+        })
+
     }
+
 
     fun populateSamplesRecyclerView(TasksList: ArrayList<Samples>) {
 

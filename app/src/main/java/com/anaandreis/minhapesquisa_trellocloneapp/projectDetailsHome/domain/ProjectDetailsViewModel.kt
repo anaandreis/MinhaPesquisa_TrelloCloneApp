@@ -93,10 +93,12 @@ class ProjectDetailsViewModel: ViewModel() {
 
 
 
-    fun warningSnapshotListener() {
-        val collectionRef = mFireStore.collection("warnings")
-
-        projectsListenerRegistration = collectionRef.addSnapshotListener { snapshot, exception ->
+    fun warningSnapshotListener(){
+        val collectionRef = currentProjectId.value?.let {
+            mFireStore.collection("warnings")
+                .whereEqualTo("projectId", it)
+        }
+        projectsListenerRegistration = collectionRef?.addSnapshotListener { snapshot, exception ->
             if (exception != null) {
                 Log.e("WARNING", "ERROR", exception)
                 return@addSnapshotListener
@@ -116,9 +118,12 @@ class ProjectDetailsViewModel: ViewModel() {
     }
 
     fun taskSnapshotListener() {
-        val collectionRef = mFireStore.collection("tasks")
+        val collectionRef = currentProjectId.value?.let {
+            mFireStore.collection("tasks")
+                .whereEqualTo("projectId", it)
+        }
 
-        projectsListenerRegistration = collectionRef.addSnapshotListener { snapshot, exception ->
+        projectsListenerRegistration = collectionRef?.addSnapshotListener { snapshot, exception ->
             if (exception != null) {
                 Log.e("TASKS", "ERROR", exception)
                 return@addSnapshotListener
@@ -138,9 +143,12 @@ class ProjectDetailsViewModel: ViewModel() {
     }
 
     fun samplesSnapshotListener() {
-        val collectionRef = mFireStore.collection("samples")
+        val collectionRef = currentProjectId.value?.let {
+            mFireStore.collection("samples")
+                .whereEqualTo("projectId", it)
+        }
 
-        projectsListenerRegistration = collectionRef.addSnapshotListener { snapshot, exception ->
+        projectsListenerRegistration = collectionRef?.addSnapshotListener { snapshot, exception ->
             if (exception != null) {
                 Log.e("SAMPLES", "ERROR", exception)
                 return@addSnapshotListener

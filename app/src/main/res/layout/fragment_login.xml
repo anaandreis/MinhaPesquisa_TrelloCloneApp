@@ -18,16 +18,14 @@
 
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/cardImageView"
             android:layout_width="385dp"
-            android:layout_height="356dp"
+            android:layout_height="385dp"
+            android:layout_marginTop="40dp"
             android:src="@drawable/elevatedcard"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.269" />
+            app:layout_constraintTop_toBottomOf="@+id/tituloEntrar" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
@@ -42,82 +40,75 @@
             android:inputType="textEmailAddress"
             android:textColorHint="@color/grey"
             app:boxBackgroundColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="@+id/cardImageView"
+            app:layout_constraintStart_toStartOf="@+id/cardImageView"
+            app:layout_constraintTop_toTopOf="@+id/cardImageView"
             app:startIconDrawable="@drawable/alternate_email"
-
-
-            />
+            android:autofillHints="" />
 
         <EditText
             android:id="@+id/password"
-            style="?attr/textInputFilledStyle"
+            style="Widget.Material3.TextInputLayout.FilledBox"
             android:layout_width="257dp"
             android:layout_height="58dp"
             android:layout_marginTop="32dp"
-            android:backgroundTint="#938E8E"
+            android:backgroundTint="#7A7A7A"
+            android:backgroundTintMode="src_atop"
             android:ems="13"
             android:hint="@string/senha"
             android:inputType="textPassword"
             android:textColorHint="@color/grey"
+            app:boxBackgroundColor="@color/black"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
-            app:startIconDrawable="@drawable/alternate_email" />
+            app:startIconDrawable="@drawable/alternate_email"
+            android:autofillHints="" />
+
+        <ImageView
+            android:id="@+id/roundBall1"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginStart="56dp"
+            android:background="@drawable/roundredball"
+            app:layout_constraintBottom_toTopOf="@+id/cardImageView"
+            app:layout_constraintStart_toEndOf="@+id/tituloEntrar" />
+
+        <ImageView
+            android:id="@+id/roundBall2"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="184dp"
+            android:layout_marginEnd="240dp"
+            android:background="@drawable/roundredball"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardImageView" />
+
 
         <TextView
             android:id="@+id/tituloEntrar"
             style="@style/TitleRobotoBold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="60dp"
-            android:text="@string/conta"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.228"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/cliqueaqui"
-            style="@style/botaotextovermelho"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/cliqueaqui"
-            app:layout_constraintBottom_toBottomOf="@+id/esqueceusenhaText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.135"
-            app:layout_constraintStart_toEndOf="@+id/esqueceusenhaText"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <TextView
-            android:id="@+id/esqueceusenhaText"
-            style="@style/cinzaembaixo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/esqueceu"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.025"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+            android:text="@string/conta"
+            app:layout_constraintBottom_toBottomOf="@+id/backButton"
+            app:layout_constraintStart_toEndOf="@+id/backButton"
+            app:layout_constraintTop_toTopOf="@+id/backButton"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="50dp"
             android:src="@drawable/ic_baseline_arrow_back_ios_24"
-            app:layout_constraintBottom_toBottomOf="@+id/tituloEntrar"
-            app:layout_constraintEnd_toStartOf="@+id/tituloEntrar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tituloEntrar" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/mainGreen" />
 
         <Button
             android:id="@+id/loginButton"
@@ -127,10 +118,10 @@
             android:backgroundTint="@color/mainRed"
             android:text="@string/entrar"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView"
-            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintBottom_toBottomOf="@+id/cardImageView"
+            app:layout_constraintEnd_toEndOf="@+id/cardImageView"
             app:layout_constraintHorizontal_bias="0.487"
-            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/cardImageView"
             app:layout_constraintTop_toBottomOf="@+id/password"
             app:layout_constraintVertical_bias="0.385" />
 

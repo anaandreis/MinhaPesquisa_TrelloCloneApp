@@ -27,7 +27,7 @@ import java.util.Date
         var startDate: Date? = null
         var endDate: Date? = null
         var createdBy: String = ""
-        var assignedTo: ArrayList<String> = ArrayList()
+        var assignedTo: MutableLiveData<ArrayList<String>?> = MutableLiveData()
 
         var projectsListenerRegistration: ListenerRegistration? = null
 
@@ -36,14 +36,13 @@ import java.util.Date
             get() = _projectsList
 
         private val mFireStore = FirebaseFirestore.getInstance()
-        val createBoardResult: MutableLiveData<Boolean> = MutableLiveData()
+        var createBoardResult: MutableLiveData<Boolean> = MutableLiveData()
         private val FirestoreClass = FirestoreClass()
 
 
 
         fun createBoard() {
-            assignedTo.clear()
-            assignedTo.add(FirestoreClass.getCurrentUserId())
+
 
 
             var projectInfo = Project(
@@ -53,7 +52,7 @@ import java.util.Date
                 startDate!!,
                 endDate!!,
                 createdBy,
-                assignedTo
+                assignedTo.value!!
             )
 
 
@@ -66,7 +65,6 @@ import java.util.Date
                 .set(projectInfo, SetOptions.merge())
                 .addOnSuccessListener {
                     createBoardResult.postValue(true)
-                    Log.d("MapSize", "Size of assignedTo map: ${assignedTo.size}")
                     resetValues()
                 }.addOnFailureListener {
                     createBoardResult.postValue(false)
@@ -81,12 +79,15 @@ import java.util.Date
             startDate = null
             endDate = null
             createdBy = ""
-            assignedTo = ArrayList()
+            assignedTo.value = null
+
         }
 
         fun addEmailToAssignedList(email: String) {
-            assignedTo.add(email)
-            Log.d("MapSize", "Size of assignedTo map: ${assignedTo.size}")
+            val currentList = assignedTo.value ?: arrayListOf()
+            currentList.add(email)
+            assignedTo.value = currentList
+            Log.d("MapSize", "Size of assignedTo ma")
         }
 
 
@@ -108,7 +109,7 @@ import java.util.Date
             val collectionRef = mFireStore.collection(Constants.PROJECTS)
                 .whereArrayContains(
                     Constants.ASSIGNED_TO,
-                    FirestoreClass.getCurrentUserId()
+                    FirestoreClass.getCurrentUserEmail()
                 )
             projectsListenerRegistration = collectionRef.addSnapshotListener { snapshot, exception ->
                 if (exception != null) {

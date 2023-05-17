@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:backgroundTint="@color/tasksRed"
+    android:backgroundTint="#E3AF15"
     tools:layout_editor_absoluteX="8dp"
     tools:layout_editor_absoluteY="545dp">
 

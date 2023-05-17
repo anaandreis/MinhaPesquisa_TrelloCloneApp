@@ -21,122 +21,149 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/signupTitle"
-        style="@style/TitleRobotoBold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:text="@string/cadastro"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/signupDescription"
-        style="@style/descricoes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:gravity="center_vertical"
-        android:text="@string/textinhocadastro"
-        app:layout_constraintStart_toStartOf="@+id/signupTitle"
-        app:layout_constraintTop_toBottomOf="@+id/signupTitle" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        style="Widget.Material3.TextInputLayout.FilledBox"
-        android:layout_width="257dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#7A7A7A"
-        android:backgroundTintMode="src_atop"
-        android:ems="13"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:textColorHint="@color/grey"
-        app:layout_constraintEnd_toEndOf="@+id/editTextName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        style="Widget.Material3.TextInputLayout.FilledBox"
-        android:layout_width="257dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#7A7A7A"
-        android:backgroundTintMode="src_atop"
-        android:ems="13"
-        android:hint="nome"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/grey"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signupDescription" />
-
-    <EditText
-        android:id="@+id/password"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="257dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#938E8E"
-        android:ems="13"
-        android:hint="@string/senha"
-        android:inputType="textPassword"
-        android:textColorHint="@color/grey"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
-
-    <EditText
-        android:id="@+id/passwordConfirme"
-        style="?attr/textInputFilledStyle"
-        android:layout_width="257dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="40dp"
-        android:backgroundTint="#938E8E"
-        android:ems="13"
-        android:hint="@string/confirme"
-        android:inputType="textPassword"
-        android:textColorHint="@color/grey"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
-
-            <Button
-                android:id="@+id/criarContaButton"
-                style="@style/Widget.Material3.Button.ElevatedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="124dp"
-                android:backgroundTint="@color/mainRed"
-                android:text="@string/criarConta"
-                android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passwordConfirme"
-                app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
                 android:id="@+id/backButtoncadastro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginEnd="20dp"
                 android:src="@drawable/ic_baseline_arrow_back_ios_24"
-                app:layout_constraintBottom_toTopOf="@+id/signupTitle"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/signupTitle"
+                app:layout_constraintHorizontal_bias="0.067"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:tint="@color/mainGreen" />
+
+            <TextView
+                android:id="@+id/signupTitle"
+                style="@style/TitleRobotoBold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="@string/cadastro"
+                app:layout_constraintBottom_toBottomOf="@+id/backButtoncadastro"
+                app:layout_constraintStart_toEndOf="@+id/backButtoncadastro"
+                app:layout_constraintTop_toTopOf="@+id/backButtoncadastro"
+                app:layout_constraintVertical_bias="0.94" />
+
+            <TextView
+                android:id="@+id/signupDescription"
+                style="@style/descricoes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:text="@string/textinhocadastro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signupTitle" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card"
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:cardBackgroundColor="@color/white"
+                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signupDescription">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/editTextTextEmailAddress"
+                        style="Widget.Material3.TextInputLayout.FilledBox"
+                        android:layout_width="257dp"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="40dp"
+                        android:backgroundTint="#7A7A7A"
+                        android:backgroundTintMode="src_atop"
+                        android:ems="13"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:textColorHint="@color/grey" />
+
+                    <EditText
+                        android:id="@+id/editTextName"
+                        style="Widget.Material3.TextInputLayout.FilledBox"
+                        android:layout_width="257dp"
+                        android:layout_height="58dp"
+                        app:boxBackgroundColor="@color/black"
+                        android:layout_marginTop="40dp"
+                        android:backgroundTint="#7A7A7A"
+                        android:backgroundTintMode="src_atop"
+                        android:ems="13"
+                        android:hint="nome"
+                        android:inputType="textPersonName"
+                        android:textColorHint="@color/grey" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="Widget.Material3.TextInputLayout.FilledBox"
+                        android:layout_width="257dp"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="40dp"
+                        android:backgroundTint="#7A7A7A"
+                        android:backgroundTintMode="src_atop"
+                        android:ems="13"
+                        android:hint="@string/senha"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/grey"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/passwordConfirme"
+                        style="Widget.Material3.TextInputLayout.FilledBox"
+                        android:layout_width="257dp"
+                        android:layout_height="58dp"
+                        android:layout_marginTop="40dp"
+                        android:backgroundTint="#7A7A7A"
+                        android:backgroundTintMode="src_atop"
+                        android:ems="13"
+                        android:hint="@string/confirme"
+                        android:inputType="textPassword"
+                        android:textColorHint="@color/grey"
+                        android:textSize="18sp" />
+
+                    <Button
+                        android:id="@+id/criarContaButton"
+                        style="@style/Widget.Material3.Button.ElevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="55dp"
+                        android:layout_marginBottom="50dp"
+                        android:backgroundTint="@color/mainRed"
+                        android:text="@string/criarConta"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView
+                android:id="@+id/roundBall3"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginStart="304dp"
+                android:background="@drawable/roundredball"
+                app:layout_constraintBottom_toBottomOf="@+id/signupTitle"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

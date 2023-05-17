@@ -60,20 +60,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:strokeColor="@color/grey" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedScrollViewWarnings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/menu"
-            app:layout_anchor="@+id/nestedScrollViewWarnings"
-            app:layout_anchorGravity="center"
-            android:layout_marginTop="80dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-            tools:ignore="NotSibling" >
 
 
         <!-- Scrollable content -->
@@ -84,10 +70,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="visible"
+            android:layout_marginTop="80dp"
             tools:layout_editor_absoluteX="0dp"
             app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
             tools:layout_editor_absoluteY="-96dp" />
-        </androidx.core.widget.NestedScrollView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasksRecyclerView"

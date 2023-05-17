@@ -3,8 +3,13 @@
     import android.content.Intent
     import android.os.Bundle
     import android.view.LayoutInflater
+    import android.view.Menu
+    import android.view.MenuInflater
     import android.view.View
     import android.view.ViewGroup
+    import android.widget.Toast
+    import androidx.core.content.ContentProviderCompat.requireContext
+    import androidx.core.content.ContextCompat.startActivity
     import androidx.databinding.DataBindingUtil
     import androidx.fragment.app.Fragment
     import androidx.fragment.app.viewModels
@@ -13,15 +18,18 @@
     import androidx.recyclerview.widget.RecyclerView
     import com.anaandreis.minhapesquisa_trellocloneapp.R
     import com.anaandreis.minhapesquisa_trellocloneapp.databinding.FragmentProjectsHomeBinding
+    import com.anaandreis.minhapesquisa_trellocloneapp.home.MainActivity
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.NewProjectFragment
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.NewProjectViewModel
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.Project
     import com.anaandreis.minhapesquisa_trellocloneapp.newProject.adapterProjects.projectsAdapter
     import com.anaandreis.minhapesquisa_trellocloneapp.projectDetailsHome.presentation.ActivityProjectDetailsHome
     import com.anaandreis.minhapesquisa_trellocloneapp.utils.Constants
+    import com.google.firebase.auth.FirebaseAuth
+    import com.google.firebase.firestore.FirebaseFirestore
 
 
-    class FragmentProjectsHome : Fragment() {
+    class FragmentProjectsHome : Fragment(){
 
         private lateinit var binding: FragmentProjectsHomeBinding
         private lateinit var recyclerView: RecyclerView
@@ -55,6 +63,20 @@
                 homeProjectFragment = this@FragmentProjectsHome
 
             }
+
+            binding.projetosAppBar.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.logOutButton -> {
+                        signOut()
+                        val intent = Intent(requireContext(), MainActivity::class.java)
+                        startActivity(intent)
+
+                        true
+                    }
+                    else -> false
+                }
+            }
+
             sharedViewModel.getBoardsList()
 
             sharedViewModel.projectsList.observe(viewLifecycleOwner, Observer { projectsList ->
@@ -66,9 +88,16 @@
 
         }
 
+
+
         override fun onDestroyView() {
             super.onDestroyView()
             removeProjectsListener()
+        }
+
+
+        fun signOut() {
+            FirebaseAuth.getInstance().signOut()
         }
 
         fun showCreateProjectSheet() {
@@ -76,7 +105,9 @@
             modalBottomSheet.show(parentFragmentManager, "ProjectSheet")
         }
 
-       fun populateProjectsRecyclerView(ProjectsList: ArrayList<Project>) {
+
+
+        fun populateProjectsRecyclerView(ProjectsList: ArrayList<Project>) {
 
            binding.projectListRecyclerView.visibility = View.VISIBLE
            recyclerView = view!!.findViewById(R.id.projectListRecyclerView)
@@ -86,7 +117,12 @@
            adapter.addAll(ProjectsList) // add new items to the adapter's list
            recyclerView.adapter = adapter
 
-           adapter.setOnClickListener(object : projectsAdapter.OnClickListener {
+            adapter.setOnDeleteButtonClickListener(object : projectsAdapter.OnDeleteButtonClickListener {
+                override fun onDeleteButtonClick(position: Int, model: Project) {
+                    // Implement the logic here when the delete button is clicked
+                }
+            })
+            adapter.setOnClickListener(object : projectsAdapter.OnClickListener {
                override fun onClick(position: Int, model: Project) {
                    val intent = Intent(requireContext(), ActivityProjectDetailsHome::class.java)
                    intent.putExtra(Constants.DOCUMENT_ID, model.documentID)
@@ -96,6 +132,8 @@
 
 
        }
+
+
 
         private fun removeProjectsListener() {
             sharedViewModel.projectsListenerRegistration?.remove()

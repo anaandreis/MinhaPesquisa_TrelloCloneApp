@@ -45,4 +45,14 @@
         <item name="android:src">@drawable/ic_user_24</item>
     </style>
 
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Toolbar</item>
+        <item name="android:src">@drawable/ic_user_24</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Toolbar" parent="">
+        <item name="colorSurface">@color/textGray</item>
+        <item name="colorOnSurface">@color/textGray</item>
+    </style>
+
 </resources>

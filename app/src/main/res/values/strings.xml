@@ -50,4 +50,7 @@
     <string name="nova_tarefa">Nova Tarefa</string>
     <string name="salvar_amostra">Salvar amostra</string>
     <string name="selecionar_prazo">Selecionar prazo</string>
+    <string name="sair">Sair</string>
+    <string name="decoration">decoration</string>
+    <string name="tasks_image">Tasks image</string>
 </resources>

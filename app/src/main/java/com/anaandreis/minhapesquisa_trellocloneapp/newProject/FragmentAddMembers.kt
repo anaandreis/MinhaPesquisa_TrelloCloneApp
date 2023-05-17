@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.anaandreis.minhapesquisa_trellocloneapp.R
 import com.anaandreis.minhapesquisa_trellocloneapp.databinding.FragmentAddMembersBinding
@@ -18,7 +19,7 @@ class FragmentAddMembers : BottomSheetDialogFragment() {
 
     lateinit var binding: FragmentAddMembersBinding
     private val dialogFunctions = DialogFunctions()
-    private val sharedViewModel: NewProjectViewModel by viewModels()
+    private val sharedViewModel: NewProjectViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -53,6 +53,8 @@ class samplesAdapter (private val context: Context,
         notifyDataSetChanged()
     }
 
+
+
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
 

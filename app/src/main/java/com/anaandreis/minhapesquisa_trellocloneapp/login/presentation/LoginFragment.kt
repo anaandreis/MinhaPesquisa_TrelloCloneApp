@@ -54,6 +54,7 @@ class LoginFragment : Fragment() {
             view.findNavController().navigate(R.id.action_loginFragment_to_homeFragment)}
 
         binding.loginButton.setOnClickListener {signIn()}
+
     }
 
     private fun signIn() {
