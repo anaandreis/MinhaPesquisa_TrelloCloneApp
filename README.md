@@ -12,4 +12,4 @@ Create Projects, monitor samples and communicate effectively with your group.
 Kotlin, MVVM, Cloud Firebase Firestore
 
 ## In progress
-The images inputs and APIs for weathear information still aren't implemented.
+The images inputs from the gallery and APIs for weather information aren't implemented yet.
